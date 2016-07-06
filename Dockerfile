@@ -17,6 +17,7 @@ RUN apt-get -y update &&\
     autoconf \
     xutils-dev \
     libtool \
+    libpciaccess-dev \
     libsdl2-dev \
     libpthread-stubs0-dev \
     libva-dev \
@@ -66,6 +67,7 @@ RUN apt-get -y update &&\
   apt-get remove --purge -y \
     git \
     curl \
+    libpciaccess-dev \
     xutils-dev \
     llvm-3.4-dev \
     automake \
