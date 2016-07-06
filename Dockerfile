@@ -4,7 +4,7 @@ MAINTAINER Sanyam Kapoor "1sanyamkapoor@gmail.com"
 
 RUN apt-get -y update &&\
   apt-get install -y --no-install-recommends \
-    git python-dev xserver-xorg \
+    git python-dev xserver-xorg llvm-3.4-dev \
     automake libtool libpthread-stubs0-dev libva-dev libdrm-dev &&\
   apt-get build-dep -y libgl1-mesa-dri libxcb-glx0-dev &&\
   apt-get install -y --no-install-recommends python-pip &&\
@@ -24,6 +24,6 @@ RUN apt-get -y update &&\
   # cleanup dev dependencies
   pip uninstall Mako &&\
   apt-get remove --purge \
-    git automake libtool libpthread-stubs0-dev libva-dev libdrm-dev &&\
+    git llvm-3.4-dev automake libtool libpthread-stubs0-dev libva-dev libdrm-dev &&\
   apt-get -y autoremove && apt-get -y autoclean &&\
   rm -rf /var/lib/apt/lists/* /tmp
