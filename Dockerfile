@@ -15,6 +15,7 @@ RUN apt-get -y update &&\
     llvm-3.4-dev \
     automake \
     autoconf \
+    xutils-dev \
     libtool \
     libsdl2-dev \
     libpthread-stubs0-dev \
@@ -65,6 +66,7 @@ RUN apt-get -y update &&\
   apt-get remove --purge -y \
     git \
     curl \
+    xutils-dev \
     llvm-3.4-dev \
     automake \
     autoconf &&\
