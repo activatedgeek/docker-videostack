@@ -7,7 +7,7 @@ A full-stack Modern OpenGL S/W Rasterizer in Docker.
 
 ## Images
 
-* `latest`, `0.1`, `0.1.0` ([Dockerfile](./Dockerfile))
+* `latest`, `0.1`, `0.1.1` ([Dockerfile](./Dockerfile))
 
 ## Details
 

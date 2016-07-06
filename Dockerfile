@@ -59,4 +59,4 @@ RUN apt-get -y update &&\
     automake \
     autoconf &&\
   apt-get -y autoremove && apt-get -y autoclean &&\
-  rm -rf /var/lib/apt/lists/* /tmp
+  rm -rf /var/lib/apt/lists/* /tmp/*
