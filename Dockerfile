@@ -9,6 +9,7 @@ RUN apt-get -y update &&\
   # install dependencies for Mesa DRI Drivers
   apt-get install -y --no-install-recommends \
     git \
+    curl \
     python-dev \
     python-opencv \
     llvm-3.4-dev \
@@ -37,10 +38,18 @@ RUN apt-get -y update &&\
     PySDL2==0.9.3 \
     freetype-py==1.0.2 \
     Mako &&\
+  # build and install latest DRM from source
+  curl -L http://dri.freedesktop.org/libdrm/libdrm-2.4.68.tar.bz2 -o /tmp/libdrm-2.4.68.tar.bz2 &&\
+    tar xvfj /tmp/libdrm-2.4.68.tar.bz2 -C /tmp &&\
+    cd /tmp/libdrm-2.4.68 &&\
+    sed -i "/pthread-stubs/d" configure.ac &&\
+    autoreconf -fiv &&\
+    ./configure --prefix=/usr --enable-udev &&\
+    make && make install &&\
   # build and install latest Mesa from source
   git clone git://anongit.freedesktop.org/git/mesa/mesa /tmp/mesa &&\
     cd /tmp/mesa &&\
-    git checkout mesa-11.2.2 &&\
+    git checkout mesa-12.0.0-rc4 &&\
     export PATH=/usr/lib/llvm-3.4/bin:$PATH &&\
     ./autogen.sh --prefix=/usr \
       --libdir=/usr/lib/x86_64-linux-gnu \
@@ -50,10 +59,12 @@ RUN apt-get -y update &&\
       --enable-glx-tls \
       --enable-texture-float &&\
     make && make install &&\
+  cd / &&\
   # cleanup dev dependencies
   pip uninstall -y Mako &&\
   apt-get remove --purge -y \
     git \
+    curl \
     llvm-3.4-dev \
     automake \
     autoconf &&\

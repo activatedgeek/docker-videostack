@@ -3,7 +3,7 @@
 | [![Build Status](https://travis-ci.org/activatedgeek/docker-opengl.svg?branch=master)](https://travis-ci.org/activatedgeek/docker-opengl) | [![](https://imagelayers.io/badge/activatedgeek/opengl:latest.svg)](https://imagelayers.io/?images=activatedgeek/opengl:latest 'Get your own badge on imagelayers.io') |
 |:-:|:-:|
 
-A full-stack Modern OpenGL S/W Rasterizer in Docker.
+A full-stack Modern OpenGL S/W Rasterizer in Docker on `Ubuntu 14.04`.
 
 ## Images
 
@@ -19,7 +19,8 @@ rendering context and `numpy` for standard Matrix operations.
 
 ### High Level Specifications
 
-* `Mesa 11.2.2` (with `swrast`)
+* `Mesa 12.0.0-rc4` (with `swrast`)
+* `libdrm` (2.4.68)
 * `Numpy` (1.11.0)
 * `Pillow` (3.3.0)
 * `PyOpenGL` (with `PyOpenGL-accelerate`) (3.1.0)
@@ -34,9 +35,19 @@ $ docker pull activatedgeek/opengl
 
 ### Run Container
 
-@TODO Coming Soon!
+**NOTE**: An X Server must be independently run on the host. Also, the X server
+must be allowed access from remote hosts via `xhost +` (or equivalent secure versions).
 
-###
+The image can then be run as:
+```
+$ docker run -it --privileged \
+  -e "DISPLAY=unix:0.0" \
+  -v="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+  activatedgeek/opengl bash
+```
+
+This will open up the bash terminal, with the `DISPLAY` set to the hosts display
+socket. It should be run in privileged mode.
 
 ## Build
 
