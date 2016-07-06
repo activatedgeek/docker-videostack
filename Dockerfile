@@ -53,7 +53,7 @@ RUN apt-get -y update &&\
     make && make install &&\
   # cleanup dev dependencies
   pip uninstall -y Mako &&\
-  apt-get remove --purge \
+  apt-get remove --purge -y \
     git \
     llvm-3.4-dev \
     automake \
