@@ -11,7 +11,6 @@ RUN apt-get -y update &&\
     git \
     python-dev \
     python-opencv \
-    xserver-xorg \
     llvm-3.4-dev \
     automake \
     autoconf \

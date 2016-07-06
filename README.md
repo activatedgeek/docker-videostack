@@ -7,7 +7,7 @@ A full-stack Modern OpenGL S/W Rasterizer in Docker.
 
 ## Images
 
-* `latest`, `0.1`, `0.1.1` ([Dockerfile](./Dockerfile))
+* `latest`, `0.1`, `0.1.0` ([Dockerfile](./Dockerfile))
 
 ## Details
 
@@ -24,7 +24,19 @@ rendering context and `numpy` for standard Matrix operations.
 * `Pillow` (3.3.0)
 * `PyOpenGL` (with `PyOpenGL-accelerate`) (3.1.0)
 * `SDL2` (with `PySDL2` bindings) (0.9.3)
-* `X Server` (for virtual display)
+
+## Usage
+
+### Pull Image from Docker Hub
+```
+$ docker pull activatedgeek/opengl
+```
+
+### Run Container
+
+@TODO Coming Soon!
+
+###
 
 ## Build
 
