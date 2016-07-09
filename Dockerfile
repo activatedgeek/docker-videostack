@@ -46,9 +46,52 @@ RUN apt-get -y update &&\
     python-dateutil==2.4.2 \
     requests==2.10.0 \
     supervisor==3.2.0 &&\
+  apt-get install -y --no-install-recommends \
+    git \
+    g++ \
+    automake \
+    libtool \
+    libpthread-stubs0-dev \
+    xserver-xorg-dev \
+    x11proto-xinerama-dev \
+    libx11-xcb-dev \
+    libxcb-glx0-dev \
+    libxrender-dev \
+    xutils-dev &&\
+  apt-get build-dep -y libgl1-mesa-dri libxcb-glx0-dev &&\
+  pip install Mako &&\
+  git clone git://anongit.freedesktop.org/git/mesa/mesa /tmp/mesa &&\
+  git clone git://anongit.freedesktop.org/git/mesa/drm /tmp/drm &&\
+  export LIBDIR=/usr/lib/x86_64-linux-gnu &&\
+  # build and install DRM from source
+  cd /tmp/drm &&\
+  ./autogen.sh --prefix=/usr --libdir=${LIBDIR} &&\
+  make && make install &&\
+  # build and install Mesa3D from source
+  cd /tmp/mesa &&\
+  ./autogen.sh --prefix=/usr \
+    --libdir=${LIBDIR} \
+    --with-gallium-drivers=swrast \
+    --without-dri-drivers \
+    --disable-dri3 \
+    --enable-glx-tls \
+    --enable-texture-float &&\
+  make && make install &&\
+  pip uninstall -y Mako &&\
   apt-get remove --purge -y \
+    git \
+    g++ \
+    automake \
+    libtool \
+    libpthread-stubs0-dev \
+    xserver-xorg-dev \
+    x11proto-xinerama-dev \
+    libx11-xcb-dev \
+    libxcb-glx0-dev \
+    libxrender-dev \
+    xutils-dev \
     software-properties-common \
-    python-dev g++ \
+    python-dev \
     python-software-properties &&\
   apt-get -y autoremove && apt-get -y autoclean &&\
   rm -rf /var/lib/apt/lists/* /tmp/*
