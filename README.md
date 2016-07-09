@@ -5,10 +5,6 @@
 
 A full-stack Modern OpenGL S/W Rasterizer in Docker on `Ubuntu 14.04`.
 
-## Images
-
-* `latest`, `0.1`, `0.1.0` ([Dockerfile](./Dockerfile))
-
 ## Details
 
 This Docker image contains all the moving parts to get up and
