@@ -25,7 +25,7 @@ RUN apt-get -y update &&\
     python-pip \
     python-opencv \
     sox \
-    zlib1g-dev \
+    zlib1g-dev &&\
   ln -s /usr/lib/x86_64-linux-gnu/libfaac.so /usr/lib &&\
   ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib &&\
   ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib &&\
