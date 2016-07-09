@@ -32,7 +32,7 @@ RUN apt-get -y update &&\
   ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib &&\
   pip install \
     azure==0.11.1 \
-    django-dotenv==0.5.1 \
+    django-dotenv==1.4.1 \
     freetype-py==1.0.2 \
     numpy==1.11.0 \
     pika==0.10.0 \
