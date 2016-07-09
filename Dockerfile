@@ -30,6 +30,7 @@ RUN apt-get -y update &&\
   ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib &&\
   ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib &&\
   ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib &&\
+  apt-get install -y python-dev &&\
   pip install \
     azure==0.11.1 \
     django-dotenv==1.4.1 \
@@ -47,6 +48,7 @@ RUN apt-get -y update &&\
     supervisor==3.2.0 &&\
   apt-get remove --purge -y \
     software-properties-common \
+    python-dev \
     python-software-properties &&\
   apt-get -y autoremove && apt-get -y autoclean &&\
   rm -rf /var/lib/apt/lists/* /tmp/*
