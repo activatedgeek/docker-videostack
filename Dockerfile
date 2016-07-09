@@ -32,20 +32,12 @@ RUN apt-get -y update &&\
   ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib &&\
   apt-get install -y python-dev g++ &&\
   pip install \
-    azure==0.11.1 \
-    django-dotenv==1.4.1 \
     freetype-py==1.0.2 \
     numpy==1.11.0 \
-    pika==0.10.0 \
     Pillow==3.3.0 \
-    py-expression-eval==0.3.2 \
-    PyMySQL==0.7.5 \
     PyOpenGL==3.1.0 \
     PyOpenGL-accelerate==3.1.0 \
-    PySDL2==0.9.3 \
-    python-dateutil==2.4.2 \
-    requests==2.10.0 \
-    supervisor==3.2.0 &&\
+    PySDL2==0.9.3 &&\
   apt-get install -y --no-install-recommends \
     git \
     g++ \
