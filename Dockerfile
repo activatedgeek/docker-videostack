@@ -11,7 +11,7 @@ RUN apt-get -y update &&\
   echo "deb http://us.archive.ubuntu.com/ubuntu trusty main multiverse" >> /etc/apt/sources.list &&\
   apt-get -y update &&\
   # install dependencies for Mesa DRI Drivers
-  apt-get install -y --no-install-recommends \
+  apt-get install -y \
     ffmpeg \
     imagemagick \
     libav-tools \
